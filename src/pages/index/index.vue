@@ -1,23 +1,34 @@
 <template>
   <view class="content">
-    <QuickList />
+    <QuickList :list="domains" />
   </view>
 </template>
 
 <script setup lang="ts">
 import QuickList from "../../components/QuickList/index.vue";
-const options = [
+import { generate } from "../../components/QuickList/utils";
+
+const domains = generate([
   {
-    text: "取消",
-    style: {
-      backgroundColor: "#007aff",
-    },
+    key: "2323",
+    disabled: false,
+    title: "测试1",
+    subTitle: "子标题",
+    checked: false,
   },
   {
-    text: "确认",
-    style: {
-      backgroundColor: "#dd524d",
-    },
+    key: "23232323",
+    disabled: false,
+    title: "测试2",
+    subTitle: "子标题",
+    checked: false,
+    abc: 2323,
   },
-];
+  {
+    title: "测试3",
+    subTitle: "ccccccccccccc",
+    showCheckbox: true,
+    key: "fffff",
+  },
+]);
 </script>

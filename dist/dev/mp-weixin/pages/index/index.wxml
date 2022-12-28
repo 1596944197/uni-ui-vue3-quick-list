@@ -1,0 +1,1 @@
+<view class="content"><quick-list wx:if="{{a}}" u-i="bc680206-0" bind:__l="__l" u-p="{{a}}"/></view>

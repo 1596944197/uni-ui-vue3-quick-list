@@ -11,26 +11,28 @@
         <checkbox-group @change="onCheckBoxChange">
           <uni-swipe-action-item
             @click="onDelete(item.key)"
-            v-for="item in domains"
+            v-for="item in props.list"
             :key="item.key"
             :right-options="swipeActionOptions"
             :disabled="item.disabled"
             :auto-close="true"
           >
-            <uni-card
-              @click.native="onCardClick($event, item)"
-              :title="item.title"
-              :sub-title="item.subTitle"
-            >
-              <view class="grid-body checkbox-content">
-                <checkbox
-                  id="checkbox"
-                  class="checkbox-item"
-                  :checked="item.checked"
-                  :value="item.key"
-                ></checkbox>
-              </view>
-            </uni-card>
+            <view class="checkbox-content">
+              <uni-card
+                @tap="onCardClick($event, item)"
+                :title="item.title"
+                :sub-title="item.subTitle"
+              >
+                <view class="grid-body">
+                  <checkbox
+                    id="checkbox"
+                    class="checkbox-item"
+                    :checked="item.checked"
+                    :value="item.key"
+                  ></checkbox>
+                </view>
+              </uni-card>
+            </view>
           </uni-swipe-action-item>
         </checkbox-group>
       </uni-swipe-action>
@@ -40,8 +42,18 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from "vue";
+import { ref } from "vue";
 import type { DomainsType, IconStatus } from "./type";
+
+const props = defineProps<{
+  list: DomainsType;
+}>();
+
+const emits = defineEmits<{
+  (e: "checkboxChange", event: string[]): void;
+  (e: "delete", event: string): void;
+  (e: "cardClick", event: DomainsType[0]): void;
+}>();
 
 const swipeActionOptions = [
   {
@@ -52,46 +64,25 @@ const swipeActionOptions = [
   },
 ];
 
-const options = [
-  {
-    text: "取消",
-    style: {
-      backgroundColor: "#007aff",
-    },
-  },
-  {
-    text: "确认",
-    style: {
-      backgroundColor: "#dd524d",
-    },
-  },
-];
-const isNoMore = ref(false);
-
-const domains = reactive<DomainsType>([
-  {
-    key: "2323",
-    disabled: false,
-    title: "测试1",
-    subTitle: "子标题",
-    checked: false,
-  },
-  {
-    key: "23232323",
-    disabled: false,
-    title: "测试2",
-    subTitle: "子标题",
-    checked: false,
-  },
-]);
-
 const iconStatus = ref<IconStatus>("noMore");
 
 // # methods
 const onScrollDown = () => {};
-const onCardClick = (a: unknown, b: unknown) => {};
-const onCheckBoxChange = () => {};
-const onDelete = (id: string) => {};
+const onCardClick = (a: AnyObj, b: DomainsType[0]) => {
+  if (a.target.id === "checkbox") return;
+  emits("cardClick", b);
+};
+const onCheckBoxChange: (ev: { detail: { value: string[] } }) => void = ({
+  detail: { value },
+}) => {
+  props.list.forEach((item) => {
+    value.includes(item.key) ? (item.checked = true) : (item.checked = false);
+  });
+  emits("checkboxChange", value);
+};
+const onDelete = (id: string) => {
+  emits("delete", id);
+};
 </script>
 
 <style lang="scss">
@@ -113,8 +104,8 @@ const onDelete = (id: string) => {};
   position: relative;
   .checkbox-item {
     position: absolute;
-    top: -60px;
-    right: 0;
+    top: 10px;
+    right: 5%;
     z-index: 50;
   }
 }

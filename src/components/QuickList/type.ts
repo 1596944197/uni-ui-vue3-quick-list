@@ -1,9 +1,13 @@
 export type IconStatus = 'noMore' | 'loading'
 
-export type DomainsType = ({
-  key: string,
+export type DomainsType = (Partial<{
   disabled: boolean,
-  title: string,
   subTitle: string
   checked: boolean
-} & AnyObj)[]
+  showCheckbox: boolean
+}> & {
+  key: string,
+  title: string,
+} & {
+    [P in keyof any]: any
+  })[]
