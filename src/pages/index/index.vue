@@ -28,7 +28,19 @@ const domains = generate([
     title: "测试3",
     subTitle: "ccccccccccccc",
     showCheckbox: true,
-    key: "fffff",
+    key: "fffff2323",
+  },
+  {
+    title: "测试4",
+    subTitle: "ccccccccccccc",
+    showCheckbox: true,
+    key: "ffff12312312f",
+  },
+  {
+    title: "测试5",
+    subTitle: "ccccccccccccc",
+    showCheckbox: true,
+    key: "ffff123213f",
   },
 ]);
 </script>
