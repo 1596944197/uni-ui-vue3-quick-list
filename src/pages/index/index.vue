@@ -31,7 +31,7 @@ const domains = generate([
     key: "fffff2323",
   },
   {
-    title: "测试4",
+    title: "测试4cccccccccccccccccccccccccccccccccccccccccccccccccccc",
     subTitle: "ccccccccccccc",
     showCheckbox: true,
     key: "ffff12312312f",
@@ -44,3 +44,7 @@ const domains = generate([
   },
 ]);
 </script>
+
+<style lang="scss">
+@import "/src/components/QuickList/QuickListStyle";
+</style>

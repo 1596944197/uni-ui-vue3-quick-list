@@ -29,6 +29,7 @@
                     class="checkbox-item"
                     :checked="item.checked"
                     :value="item.key"
+                    v-if="item.showCheckbox"
                   ></checkbox>
                 </view>
               </uni-card>

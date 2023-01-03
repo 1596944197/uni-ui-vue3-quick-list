@@ -31,7 +31,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         key: "fffff2323"
       },
       {
-        title: "\u6D4B\u8BD54",
+        title: "\u6D4B\u8BD54cccccccccccccccccccccccccccccccccccccccccccccccccccc",
         subTitle: "ccccccccccccc",
         showCheckbox: true,
         key: "ffff12312312f"
