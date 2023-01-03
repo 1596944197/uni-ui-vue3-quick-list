@@ -11,7 +11,7 @@
         <checkbox-group @change="onCheckBoxChange">
           <uni-swipe-action-item
             @click="onDelete(item.key)"
-            v-for="item in props.list"
+            v-for="(item, index) in props.list"
             :key="item.key"
             :right-options="swipeActionOptions"
             :disabled="item.disabled"
@@ -23,7 +23,7 @@
                 :title="item.title"
                 :sub-title="item.subTitle"
               >
-                <view class="grid-body">
+                <view class="grid-body-parent">
                   <checkbox
                     id="checkbox"
                     class="checkbox-item"
@@ -31,6 +31,10 @@
                     :value="item.key"
                     v-if="item.showCheckbox"
                   ></checkbox>
+                  <slot name="content" :record="item" :currentIndex="index">
+                    <text> 标题: <text>测试插槽1</text> </text>
+                    <text> 标题: <text>测试插槽2</text> </text>
+                  </slot>
                 </view>
               </uni-card>
             </view>
@@ -87,7 +91,7 @@ const onDelete = (id: string) => {
 </script>
 
 <style lang="scss">
-.grid-body {
+.grid-body-parent > view {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   column-gap: 20rpx;

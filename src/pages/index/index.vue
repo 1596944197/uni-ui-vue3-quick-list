@@ -1,10 +1,23 @@
 <template>
   <view class="content">
-    <QuickList :list="domains" />
+    <QuickList :list="domains">
+      <template #content="{ record, currentIndex }">
+        <text
+          >当前索引为：<text>{{ currentIndex }}</text></text
+        >
+        <text>
+          当前键值为：<text>{{ record.key }}</text>
+        </text>
+        <text>
+          是否显示选择框：<text>{{ record.showCheckbox }}</text>
+        </text>
+      </template>
+    </QuickList>
   </view>
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
 import QuickList from "../../components/QuickList/index.vue";
 import { generate } from "../../components/QuickList/utils";
 
@@ -43,6 +56,8 @@ const domains = generate([
     key: "ffff123213f",
   },
 ]);
+
+const fff = ref(0xff);
 </script>
 
 <style lang="scss">

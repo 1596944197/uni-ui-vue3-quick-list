@@ -51,23 +51,28 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     };
     return (_ctx, _cache) => {
       return {
-        a: common_vendor.f(props.list, (item, k0, i0) => {
+        a: common_vendor.f(props.list, (item, index, i0) => {
           return common_vendor.e({
             a: item.showCheckbox
           }, item.showCheckbox ? {
             b: item.checked,
             c: item.key
           } : {}, {
-            d: common_vendor.o(($event) => onCardClick($event, item), item.key),
-            e: "5e8ef572-2-" + i0 + "," + ("5e8ef572-1-" + i0),
-            f: common_vendor.p({
+            d: "content-" + i0,
+            e: common_vendor.r("content", {
+              record: item,
+              currentIndex: index
+            }, i0),
+            f: common_vendor.o(($event) => onCardClick($event, item), item.key),
+            g: "5e8ef572-2-" + i0 + "," + ("5e8ef572-1-" + i0),
+            h: common_vendor.p({
               title: item.title,
               ["sub-title"]: item.subTitle
             }),
-            g: common_vendor.o(($event) => onDelete(item.key), item.key),
-            h: item.key,
-            i: "5e8ef572-1-" + i0 + ",5e8ef572-0",
-            j: common_vendor.p({
+            i: common_vendor.o(($event) => onDelete(item.key), item.key),
+            j: item.key,
+            k: "5e8ef572-1-" + i0 + ",5e8ef572-0",
+            l: common_vendor.p({
               ["right-options"]: swipeActionOptions,
               disabled: item.disabled,
               ["auto-close"]: true

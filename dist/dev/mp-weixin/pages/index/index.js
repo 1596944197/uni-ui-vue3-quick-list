@@ -43,9 +43,26 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         key: "ffff123213f"
       }
     ]);
+    common_vendor.ref(255);
     return (_ctx, _cache) => {
       return {
-        a: common_vendor.p({
+        a: common_vendor.w(({
+          record,
+          currentIndex
+        }, s0, i0) => {
+          return {
+            a: common_vendor.t(currentIndex),
+            b: common_vendor.t(record.key),
+            c: common_vendor.t(record.showCheckbox),
+            d: i0,
+            e: s0
+          };
+        }, {
+          name: "content",
+          path: "a",
+          vueId: "bc680206-0"
+        }),
+        b: common_vendor.p({
           list: common_vendor.unref(domains)
         })
       };
