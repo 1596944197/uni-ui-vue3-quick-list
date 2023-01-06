@@ -23,21 +23,6 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.grid-body-parent > view {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  -moz-column-gap: 20rpx;
-       column-gap: 20rpx;
-  font-size: 24rpx;
-}
-.grid-body-parent > view text {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.grid-body-parent > view text text {
-  font-weight: 600;
-}
 .checkbox-content {
   position: relative;
 }

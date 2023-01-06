@@ -26,3 +26,18 @@
  .uni-card__header-content {
   padding-right: 10%;
 }
+.grid-body {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  -moz-column-gap: 20rpx;
+       column-gap: 20rpx;
+  font-size: 24rpx;
+}
+.grid-body text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.grid-body text text {
+  font-weight: 600;
+}

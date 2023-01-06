@@ -40,10 +40,33 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         title: "\u6D4B\u8BD55",
         subTitle: "ccccccccccccc",
         showCheckbox: true,
-        key: "ffff123213f"
+        key: "ffff123213f234234565786897987734213"
+      },
+      {
+        title: "\u6D4B\u8BD55",
+        subTitle: "ccccccccccccc",
+        showCheckbox: true,
+        key: Math.random().toString()
+      },
+      {
+        title: "\u6D4B\u8BD55",
+        subTitle: "ccccccccccccc",
+        showCheckbox: true,
+        key: Math.random().toString()
+      },
+      {
+        title: "\u6D4B\u8BD55",
+        subTitle: "ccccccccccccc",
+        showCheckbox: true,
+        key: Math.random().toString()
       }
     ]);
-    common_vendor.ref(255);
+    const loading = common_vendor.ref(false);
+    const onScrollDown = () => {
+      console.log(123123);
+      loading.value = true;
+      console.log(loading.value);
+    };
     return (_ctx, _cache) => {
       return {
         a: common_vendor.w(({
@@ -53,7 +76,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
           return {
             a: common_vendor.t(currentIndex),
             b: common_vendor.t(record.key),
-            c: common_vendor.t(record.showCheckbox),
+            c: common_vendor.t(record.showCheckbox || "-"),
             d: i0,
             e: s0
           };
@@ -62,8 +85,10 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
           path: "a",
           vueId: "bc680206-0"
         }),
-        b: common_vendor.p({
-          list: common_vendor.unref(domains)
+        b: common_vendor.o(onScrollDown),
+        c: common_vendor.p({
+          list: common_vendor.unref(domains),
+          loading: loading.value
         })
       };
     };

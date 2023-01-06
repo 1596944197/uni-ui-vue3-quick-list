@@ -17,9 +17,11 @@ if (!Math) {
 const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   __name: "index",
   props: {
-    list: { type: null, required: true }
+    list: { type: null, required: true },
+    scrollViewStyle: { type: Object, required: false },
+    loading: { type: Boolean, required: false }
   },
-  emits: ["checkboxChange", "delete", "cardClick"],
+  emits: ["checkboxChange", "delete", "cardClick", "onScrollDown"],
   setup(__props, { emit: emits }) {
     const props = __props;
     const swipeActionOptions = [
@@ -30,8 +32,9 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         }
       }
     ];
-    const iconStatus = common_vendor.ref("noMore");
+    const iconStatus = common_vendor.ref(props.loading ? "loading" : "noMore");
     const onScrollDown = () => {
+      emits("onScrollDown");
     };
     const onCardClick = (a, b) => {
       if (a.target.id === "checkbox")
@@ -83,7 +86,10 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         c: common_vendor.p({
           status: iconStatus.value
         }),
-        d: common_vendor.o(onScrollDown)
+        d: common_vendor.o(onScrollDown),
+        e: common_vendor.s(__props.scrollViewStyle || {
+          height: "90vh"
+        })
       };
     };
   }

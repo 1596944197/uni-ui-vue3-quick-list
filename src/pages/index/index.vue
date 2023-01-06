@@ -1,16 +1,22 @@
 <template>
   <view class="content">
-    <QuickList :list="domains">
+    <QuickList
+      :list="domains"
+      :loading="loading"
+      @on-scroll-down="onScrollDown"
+    >
       <template #content="{ record, currentIndex }">
-        <text
-          >当前索引为：<text>{{ currentIndex }}</text></text
-        >
-        <text>
-          当前键值为：<text>{{ record.key }}</text>
-        </text>
-        <text>
-          是否显示选择框：<text>{{ record.showCheckbox }}</text>
-        </text>
+        <view class="grid-body">
+          <text
+            >当前索引为：<text>{{ currentIndex }}</text></text
+          >
+          <text>
+            当前键值为：<text>{{ record.key }}</text>
+          </text>
+          <text>
+            是否显示选择框：<text>{{ record.showCheckbox || "-" }}</text>
+          </text>
+        </view>
       </template>
     </QuickList>
   </view>
@@ -53,13 +59,52 @@ const domains = generate([
     title: "测试5",
     subTitle: "ccccccccccccc",
     showCheckbox: true,
-    key: "ffff123213f",
+    key: "ffff123213f234234565786897987734213",
+  },
+  {
+    title: "测试5",
+    subTitle: "ccccccccccccc",
+    showCheckbox: true,
+    key: Math.random().toString(),
+  },
+  {
+    title: "测试5",
+    subTitle: "ccccccccccccc",
+    showCheckbox: true,
+    key: Math.random().toString(),
+  },
+  {
+    title: "测试5",
+    subTitle: "ccccccccccccc",
+    showCheckbox: true,
+    key: Math.random().toString(),
   },
 ]);
 
-const fff = ref(0xff);
+const loading = ref(false);
+
+const onScrollDown = () => {
+  console.log(123123);
+  loading.value = true;
+  console.log(loading.value);
+};
 </script>
 
 <style lang="scss">
 @import "/src/components/QuickList/QuickListStyle";
+
+.grid-body {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20rpx;
+  font-size: 24rpx;
+  text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text {
+      font-weight: 600;
+    }
+  }
+}
 </style>
