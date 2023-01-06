@@ -44,7 +44,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, watchEffect } from "vue";
 import type { DomainsType, IconStatus } from "./type";
 
 const props = defineProps<{
@@ -54,8 +54,8 @@ const props = defineProps<{
 }>();
 
 const emits = defineEmits<{
-  (e: "checkboxChange", event: string[]): void;
-  (e: "delete", event: string): void;
+  (e: "checkboxChange", ids: string[]): void;
+  (e: "delete", id: string): void;
   (e: "cardClick", event: DomainsType[0]): void;
   (e: "onScrollDown"): void;
 }>();
@@ -70,6 +70,11 @@ const swipeActionOptions = [
 ];
 
 const iconStatus = ref<IconStatus>(props.loading ? "loading" : "noMore");
+
+watchEffect(() => {
+  if (props.loading) iconStatus.value = "loading";
+  else iconStatus.value = "noMore";
+});
 
 // # methods
 const onScrollDown = () => {

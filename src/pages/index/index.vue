@@ -4,6 +4,8 @@
       :list="domains"
       :loading="loading"
       @on-scroll-down="onScrollDown"
+      @delete="onDelete"
+      @card-click="onCardTap"
     >
       <template #content="{ record, currentIndex }">
         <view class="grid-body">
@@ -84,9 +86,26 @@ const domains = generate([
 const loading = ref(false);
 
 const onScrollDown = () => {
-  console.log(123123);
   loading.value = true;
-  console.log(loading.value);
+
+  setTimeout(() => {
+    loading.value = false;
+  }, 1000);
+};
+
+const onDelete = (id: string) => {
+  uni.showToast({
+    title: `选中的key值为${id}`,
+    icon: "none",
+  });
+  // domains.splice(
+  //   domains.findIndex((v) => v.key === id),
+  //   1
+  // );
+};
+
+const onCardTap = (target: any) => {
+  console.log(target);
 };
 </script>
 

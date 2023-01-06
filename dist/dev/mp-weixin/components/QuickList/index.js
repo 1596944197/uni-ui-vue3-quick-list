@@ -33,6 +33,12 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       }
     ];
     const iconStatus = common_vendor.ref(props.loading ? "loading" : "noMore");
+    common_vendor.watchEffect(() => {
+      if (props.loading)
+        iconStatus.value = "loading";
+      else
+        iconStatus.value = "noMore";
+    });
     const onScrollDown = () => {
       emits("onScrollDown");
     };

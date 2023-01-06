@@ -3220,6 +3220,9 @@ function inject(key, defaultValue, treatDefaultAsFactory = false) {
     warn$1(`inject() can only be used inside setup() or functional components.`);
   }
 }
+function watchEffect(effect, options) {
+  return doWatch(effect, null, options);
+}
 const INITIAL_WATCHER_VALUE = {};
 function watch(source, cb, options) {
   if (!isFunction(cb)) {
@@ -6617,3 +6620,4 @@ exports.s = s;
 exports.t = t;
 exports.unref = unref;
 exports.w = w;
+exports.watchEffect = watchEffect;

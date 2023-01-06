@@ -63,9 +63,19 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     ]);
     const loading = common_vendor.ref(false);
     const onScrollDown = () => {
-      console.log(123123);
       loading.value = true;
-      console.log(loading.value);
+      setTimeout(() => {
+        loading.value = false;
+      }, 1e3);
+    };
+    const onDelete = (id) => {
+      common_vendor.index.showToast({
+        title: `\u9009\u4E2D\u7684key\u503C\u4E3A${id}`,
+        icon: "none"
+      });
+    };
+    const onCardTap = (target) => {
+      console.log(target);
     };
     return (_ctx, _cache) => {
       return {
@@ -86,7 +96,9 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
           vueId: "bc680206-0"
         }),
         b: common_vendor.o(onScrollDown),
-        c: common_vendor.p({
+        c: common_vendor.o(onDelete),
+        d: common_vendor.o(onCardTap),
+        e: common_vendor.p({
           list: common_vendor.unref(domains),
           loading: loading.value
         })
