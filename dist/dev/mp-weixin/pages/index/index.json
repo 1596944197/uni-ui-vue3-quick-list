@@ -1,6 +1,8 @@
 {
   "navigationBarTitleText": "uni-app",
   "usingComponents": {
+    "uni-col": "../../uni_modules/uni-row/components/uni-col/uni-col",
+    "uni-row": "../../uni_modules/uni-row/components/uni-row/uni-row",
     "quick-list": "../../components/QuickList/index"
   }
 }

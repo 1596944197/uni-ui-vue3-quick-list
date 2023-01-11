@@ -1,3 +1,11 @@
 ::v-deep .uni-card__header-content {
   padding-right: 10%;
 }
+
+.content-class {
+  font-weight: 600;
+  font-size: 20rpx;
+}
+.title-class {
+  font-size: 20rpx;
+}

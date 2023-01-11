@@ -8,17 +8,22 @@
       @card-click="onCardTap"
     >
       <template #content="{ record, currentIndex }">
-        <view class="grid-body">
-          <text
-            >当前索引为：<text>{{ currentIndex }}</text></text
-          >
-          <text>
-            当前键值为：<text>{{ record.key }}</text>
-          </text>
-          <text>
-            是否显示选择框：<text>{{ record.showCheckbox || "-" }}</text>
-          </text>
-        </view>
+        <uni-row>
+          <uni-col :span="12">
+            <text class="title-class">当前键值为：</text>
+            <text class="content-class">{{ record.key }}</text>
+          </uni-col>
+          <uni-col :span="12">
+            <text class="title-class">当前索引为：</text>
+            <text class="con-class">{{ currentIndex }}</text>
+          </uni-col>
+        </uni-row>
+        <uni-row>
+          <uni-col :span="12">
+            <text class="title-class">是否显示选择框：</text>
+            <text class="content-class">{{ record.showCheckbox || "-" }}</text>
+          </uni-col>
+        </uni-row>
       </template>
     </QuickList>
   </view>
@@ -111,19 +116,4 @@ const onCardTap = (target: any) => {
 
 <style lang="scss">
 @import "/src/components/QuickList/QuickListStyle";
-
-.grid-body {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: 20rpx;
-  font-size: 24rpx;
-  text {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    text {
-      font-weight: 600;
-    }
-  }
-}
 </style>
